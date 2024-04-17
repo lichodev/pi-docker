@@ -17,7 +17,7 @@ services:
   api-springboot:
     image: primera-infancia/springboot
     ports:
-      - "8080:8080"
+      - 8080:8080
     environment:
       - MYSQL_HOST=database
       - MYSQL_USER=${MYSQL_USER}
@@ -28,12 +28,26 @@ services:
 
   web-client:
     image: primera-infancia/angular
-    ports:
-      - "80:80"
     environment:
       - BASE_URL=${BASE_URL}
     restart: unless-stopped
 
+  caddy:
+    image: caddy:2.7-alpine
+    restart: always
+    cap_add:
+      - NET_ADMIN
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - caddy_data:/data
+      - caddy_config:/config
+
 volumes:
+  caddy_data:
+  caddy_config:
   pi_data:
-    external: true
+

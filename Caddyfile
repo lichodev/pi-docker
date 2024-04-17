@@ -1,0 +1,8 @@
+priminf.local {
+	reverse_proxy /* web-client:80
+
+	handle_path /api/* {
+		reverse_proxy api-springboot:8080
+	}	
+}
+
