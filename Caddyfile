@@ -10,4 +10,3 @@ priminf.unicen.edu.ar {
 		reverse_proxy portainer:9000
 	}
 }
-
