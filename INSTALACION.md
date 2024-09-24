@@ -6,8 +6,8 @@ Requerimientos de hardware:
 
 |             | Memoria |  CPU   | Disco |
 | ----------- | :-----: | :----: | :---: |
-| Minimo      |   2GB   | 1 vCPU | 20GB  |
-| Recomendado |   4GB   | 2 vCPU | 20GB  |
+| Minimo      |   1GB   | 1 vCPU | 20GB  |
+| Recomendado |   2GB   | 2 vCPU | 20GB  |
 
 ### 1.1 Instalar Docker
 
