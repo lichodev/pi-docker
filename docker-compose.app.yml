@@ -1,0 +1,41 @@
+version: '3.3'
+services:
+  database:
+    image: mysql:8
+    volumes:
+      - database:/var/lib/mysql
+      - /home/priminf/pi-docker/primera_infancia.sql:/docker-entrypoint-initdb.d/dump.sql:ro
+    environment:
+      - MYSQL_RANDOM_ROOT_PASSWORD=yes
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+    restart: unless-stopped
+
+  api-springboot:
+    image: manuminnig/pi-springboot:${SPRINGBOOT_VERSION}
+    environment:
+      - MYSQL_HOST=database
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_NAME=${MYSQL_DATABASE}
+    depends_on: [database]
+    restart: unless-stopped
+    networks: 
+      - caddy
+      - default
+
+  web-client:
+    image: manuminnig/pi-angular:${ANGULAR_VERSION}
+    environment:
+      - BASE_URL=${BASE_URL}
+    restart: unless-stopped
+    networks: 
+      - caddy
+
+networks: 
+  caddy: 
+    external: true
+
+volumes:
+  database:
