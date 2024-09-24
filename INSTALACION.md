@@ -4,10 +4,10 @@
 
 Requerimientos de hardware:
 
-|             | Memoria | CPU    | Disco |
-| ----------- | ------- | ------ | ----- |
-| Minimo      | 2GB     | 1 vCPU | 20GB  |
-| Recomendado | 4GB     | 2 vCPU | 20GB  |
+|             | Memoria |  CPU   | Disco |
+| ----------- | :-----: | :----: | :---: |
+| Minimo      |   2GB   | 1 vCPU | 20GB  |
+| Recomendado |   4GB   | 2 vCPU | 20GB  |
 
 ### 1.1 Instalar Docker
 
@@ -38,7 +38,7 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin 
 
 Si se utiliza un usuario no-root, se debe agregar al usuario al grupo `docker` para poder ejecutar contenedores sin necesidad de sudo. Hay una guía que indica los [pasos post-instalación para sistemas operativos Linux](https://docs.docker.com/engine/install/linux-postinstall/).
 
-```sh 
+```sh
 sudo groupadd docker
 sudo usermod -aG docker $USER
 newgrp docker
@@ -59,7 +59,7 @@ sed -i "s/priminf.unicen.edu.ar/$DOMINIO/g" Caddyfile
 docker compose -f docker-compose.base.yml up -d
 ```
 
-Una vez levantado los contenedores, se va a poder navegar https://tudominio.com/portainer/ y acceder al panel de administración, donde vas a poder crear el primer usuario de Portainer. 
+Una vez levantado los contenedores, se va a poder navegar https://tudominio.com/portainer/ y acceder al panel de administración, donde vas a poder crear el primer usuario de Portainer.
 
 ## 3. Crear _stack_ de Primera Infancia
 
@@ -91,4 +91,4 @@ Un ejemplo es realizar scp a otro servidor, para guardar el backup:
 scp $1 backup@backup.server:~/backups/
 ```
 
-De esta forma, se puede cambiar el esquema con el que se distribuirá el backup sin estar atado a una tecnología o método. 
+De esta forma, se puede cambiar el esquema con el que se distribuirá el backup sin estar atado a una tecnología o método.
