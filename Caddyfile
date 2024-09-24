@@ -1,8 +1,13 @@
-priminf.local {
+priminf.unicen.edu.ar {	
+	
 	reverse_proxy /* web-client:80
 
 	handle_path /api/* {
 		reverse_proxy api-springboot:8080
 	}	
+	
+	handle_path /portainer/* {
+		reverse_proxy portainer:9000
+	}
 }
 

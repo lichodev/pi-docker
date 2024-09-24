@@ -27,27 +27,41 @@ services:
     restart: unless-stopped
 
   web-client:
-    image: primera-infancia/angular
+    image: manuminnig/pi-angular:1.0.1
     environment:
       - BASE_URL=${BASE_URL}
     restart: unless-stopped
 
-  caddy:
-    image: caddy:2.7-alpine
-    restart: always
-    cap_add:
-      - NET_ADMIN
-    ports:
-      - "80:80"
-      - "443:443"
-      - "443:443/udp"
-    volumes:
-      - ./Caddyfile:/etc/caddy/Caddyfile
-      - caddy_data:/data
-      - caddy_config:/config
+#  caddy:
+#    image: caddy:2.7-alpine
+#    restart: always
+#    cap_add:
+#      - NET_ADMIN
+#    ports:
+#      - "80:80"
+#      - "443:443"
+#      - "443:443/udp"
+#    volumes:
+#      - ./Caddyfile:/etc/caddy/Caddyfile
+#      - caddy_data:/data
+#      - caddy_config:/config
+#
+#  portainer-ce:
+#    ports:
+#      - 8000:8000
+#      - 9443:9443
+#      - 9000:9000
+#    container_name: portainer
+#    restart: always
+#    volumes:
+#      - /var/run/docker.sock:/var/run/docker.sock
+#      - portainer_data:/data
+#    image: portainer/portainer-ce:latest
+
 
 volumes:
-  caddy_data:
-  caddy_config:
+  # caddy_data:
+  # caddy_config:
   pi_data:
-
+  # portainer_data:
+  #   external: true
