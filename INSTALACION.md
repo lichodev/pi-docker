@@ -1,5 +1,3 @@
-[[ _TOC_ ]]
-
 # Instalación de Primera Infancia en Docker con Portainer
 
 ## 1. Configurar VM con Docker
