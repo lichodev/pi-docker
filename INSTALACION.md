@@ -63,7 +63,20 @@ Una vez levantado los contenedores, se va a poder navegar https://tudominio.com/
 
 ## 3. Crear _stack_ de Primera Infancia
 
+Cargar las variables de entorno
+
+Cargar contenido de docker-compose.app.yml en el Stack 
+```sh
+
+```
+
 ## 4. Configurar CD
+
+Para configurar que se despliegue automáticamente los nuevos contenedores, se utiliza un script en ambos proyectos de código fuente (`redeploy.mjs`).
+
+### 4.1 Crear token
+
+### 4.2 Ajustar configuración en los repositorios
 
 ## 5. Configurar backups
 
@@ -87,7 +100,7 @@ Un ejemplo es realizar scp a otro servidor, para guardar el backup:
 ```sh
 #! /bin/env bash
 #
-# /usr/bin/upload-backup
+# esto es el archivo /usr/bin/upload-backup
 scp $1 backup@backup.server:~/backups/
 ```
 
