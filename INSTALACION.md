@@ -109,7 +109,7 @@ El docker-compose necesario para crear el stack es `docker-compose.app.yml`; cop
 
 ![Variables de entorno](./docs/crear-stack-3.png)
 
-Completamos, en la interfaz web, las variables de entorno necesarias:
+Completamos, en la interfaz web, las variables de entorno necesarias para Portainer:
 
 | ENV                | Uso                                            | `.env` | Portainer |
 | ------------------ | ---------------------------------------------- | :----: | :-------: |
@@ -129,7 +129,20 @@ Para configurar que se despliegue automáticamente los nuevos contenedores, se u
 
 ### 4.1 Ajustar configuración en los repositorios
 
+Cada repositorio de código fuente (`pi-angular` y `pi-springboot`) tiene un script `redeploy.mjs` que hay que ajustar según el entorno. Específicamente, hay que ajustar 3 campos. **Si el despliegue es exactamente igual a este ejemplo, únicamente cambiar `API`** 
+- `API`: hay que poner el dominio del portainer desplegado anteriormente, manteniendo el path de ejemplo
+- `id`: hay que cambiarlo por el ID del stack de `priminf`. Ej: https://priminf.unicen.edu.ar/portainer/#!/2/docker/stacks/priminf?**id=1**
+- `endpointId`: hay que cambiarlo por el ID del `environment`. Ej: https://priminf.unicen.edu.ar/portainer/#!/**2**/docker/stacks/priminf?id=1
+
 ### 4.2 Crear token
+
+Para crear el token, se genera en el perfil de usuario de portainer:
+
+![Creación de token](./docs/crear-token.png)
+
+Luego, hay que agregarlo como variable de entorno en el CI de GitHub con el nombre de "PORTAINER_ACCESS_TOKEN":
+
+![Cargar token en GitHub como un secret](./docs/cargar-token.png)
 
 ## 5. Configurar backups
 
